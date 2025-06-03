@@ -194,6 +194,7 @@ def parse_arguments():
     parser.add_argument("--output_video",type=str,default=DEFAULT_OUTPUT_VIDEO_PATH_MARKER, help="Path for final video. Default: 'auto' (derived from input name, saved in 'output/' subdir).")
     parser.add_argument("--allowed_classes",nargs="+",default=DEFAULT_ALLOWED_CLASSES,help=f"Classes to track.")
     parser.add_argument("--confidence_threshold",type=float,default=DEFAULT_CONFIDENCE_THRESHOLD,help=f"Min confidence.")
+    parser.add_argument("--box_color", type=str, default="0,255,0", help="Color for bounding box as R,G,B (default: green)")
     return parser.parse_args()
 
 def process_audio_ffmpeg(video_source_path, temp_silent_video_abs_path, final_output_video_path, target_fps):
@@ -259,6 +260,14 @@ def main():
         except Exception as e: print(f"[DEBUG] Error GPUtil priming: {e}")
 
     args = parse_arguments() 
+    try:
+        box_color = tuple(int(c) for c in args.box_color.split(','))[::-1]  # Convert RGB to BGR
+        if len(box_color) != 3 or not all(0 <= c <= 255 for c in box_color):
+            raise ValueError
+    except:
+        print("❌ [ERROR] Invalid --box_color format. Use R,G,B with values 0-255. Defaulting to green.")
+        box_color = (0, 255, 0)
+        box_color = (0, 255, 0)
 
     input_video_path_interactive = input("➡️ Please enter the path to the input video file: ").strip()
     if input_video_path_interactive.startswith("'") and input_video_path_interactive.endswith("'"):
@@ -382,9 +391,9 @@ def main():
                     if class_name in args.allowed_classes:
                         x1,y1,x2,y2=map(int,box.xyxy[0]); conf=box.conf[0]
                         label=f"ID:{track_id} {class_name} {conf:.2f}"
-                        cv2.rectangle(annotated_frame,(x1,y1),(x2,y2),(0,255,0),2)
+                        cv2.rectangle(annotated_frame,(x1,y1),(x2,y2),box_color,2)
                         (tw,th),_=cv2.getTextSize(label,cv2.FONT_HERSHEY_SIMPLEX,0.5,1)
-                        cv2.rectangle(annotated_frame,(x1,y1-th-10),(x1+tw,y1-5),(0,255,0),-1)
+                        cv2.rectangle(annotated_frame,(x1,y1-th-10),(x1+tw,y1-5),box_color,-1)
                         cv2.putText(annotated_frame,label,(x1,y1-5),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),1)
             
             frame_output_queue.put((True, annotated_frame)) 
