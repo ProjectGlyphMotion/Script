@@ -1,0 +1,6 @@
+opencv-python
+ultralytics
+tqdm
+torch
+psutil
+GPUtil
