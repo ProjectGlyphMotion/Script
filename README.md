@@ -65,12 +65,17 @@ python3 ot.py --box_color 0,255,0
 - Videos are saved in the `output/` directory.
 - Format: `<original_name>_processed.mp4`
 
+## ✅ [Example](https://drive.google.com/file/d/1kV9-v5E5T7AiDEnNQWlmznmK0GhN4JMc/view) Result
+
 ---
 
-## ✅ Example Result
+## 📃 License
 
+MIT License © 2025 Sayan Sarkar & Shitij Halder
 
-[Here](https://drive.google.com/file/d/1kV9-v5E5T7AiDEnNQWlmznmK0GhN4JMc/view)
----
+## Credits
 
- Made with ❤️ by Sayan and Shitij
+Made with ❤️ by Sayan and Shitij
+
+This project is based on the [Ultralytics YOLOv11](https://github.com/ultralytics/ultralytics), an acclaimed real-time object detection and image segmentation model.
+</immersive>
