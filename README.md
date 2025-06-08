@@ -77,5 +77,5 @@ MIT License © 2025 Sayan Sarkar & Shitij Halder
 
 Made with ❤️ by Sayan and Shitij
 
-This project is based on the [Ultralytics YOLOv11](https://github.com/ultralytics/ultralytics), an acclaimed real-time object detection and image segmentation model.
+This project is based on the [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics), an acclaimed real-time object detection and image segmentation model.
 </immersive>
