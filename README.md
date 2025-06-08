@@ -1,4 +1,4 @@
-# 🎯 YOLOv8 Object Tracker with Custom Box Colors
+# Project GlyphMotion 🌀✨
 
 This script performs object tracking on input videos using [YOLOv8](https://github.com/ultralytics/ultralytics) and allows you to specify bounding box colors. It supports threading for I/O, system resource monitoring, and preserves original video audio using FFmpeg.
 
