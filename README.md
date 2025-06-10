@@ -22,7 +22,7 @@ This script performs object tracking on input videos using [YOLOv8](https://gith
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/sayann70/ObjectTracking-Python && cd ObjectTracking-Python
+git clone https://github.com/ProjectGlyphMotion/Script && cd Script
 ```
 
 ### Install Dependencies
